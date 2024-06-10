@@ -24,8 +24,9 @@ tramp
 /eshell/lastdir
 
 # elpa packages & melpa 
-/elpa/
-/melpa/
+elpa/
+melpa/
+eshell/
 
 # reftex files
 *.rel
@@ -50,11 +51,13 @@ flycheck_*.el
 url/
 workspace/
 intelephense/
+eclipe*
 .lsp*
 lsp*
 ido*
 smex*
 .mc-*
+.*
 # directory configuration
 .dir-locals.el
 auto-save-list/
