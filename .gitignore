@@ -50,6 +50,7 @@ flycheck_*.el
 url/
 workspace/
 intelephense/
+.lsp*
 lsp*
 ido*
 smex*
