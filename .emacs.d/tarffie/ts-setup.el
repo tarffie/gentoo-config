@@ -3,21 +3,21 @@
 (rc/require 'rjsx-mode)
 (rc/require 'web-mode)
 
-
 (use-package rjsx-mode
   :ensure t
-  :mode "\\.js\\'"
+  :mode "\\.jsx\\'"
   :mode "\\.tsx\\'")
 
 (use-package tide
   :ensure t
-  :after (rjsx-mode company flycheck)
-  :hook (rjsx-mode . setup-tide-mode))
+  :after (typescript company flycheck)
+  :hook (setup-tide-mode . typescript))
 
 (defun setup-tide-mode()
   (interactive)
   (tide-setup)
   (flycheck-mode +1)
+  (typescript-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier +1)

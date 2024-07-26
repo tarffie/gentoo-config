@@ -1,4 +1,4 @@
-;; TSX and JSX requires some aditional config and I'm using it on a separate file .
+;; typescript and stuff requires some aditional config and I'm using it on a separate file .
 (load "~/.emacs.d/tarffie/ts-setup.el")
 ;; ido
 (rc/require 'smex 'ido-completing-read+)
@@ -10,7 +10,6 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-c n") (find-file "~/notes/notes.org"))
 
-
 ;; paraedit
 
 ;; LSP + Tree-sitter
@@ -20,8 +19,22 @@
 (rc/require 'flycheck)
 (rc/require 'lsp-treemacs)
 
-(require 'lsp-mode)
-(add-hook 'prog-mode-hook #'lsp-deferred)
+(use-package lsp-mode
+ :init
+ (setq lsp-keymap-prefix "C-c l")
+ :hook (rjsx-mode  . lsp)
+ (php-mode . lsp)
+ (java-mode . lsp)
+ (cc-mode . lsp)
+ (c-mode . lsp)
+ (rust-mode . lsp)
+ (typescript-mode . lsp)
+ (javascript-mode . lsp)
+ (ocaml-mode . lsp))
+
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 (rc/require 'tree-sitter)
 (rc/require 'tree-sitter-langs)
@@ -112,4 +125,7 @@
 (global-set-key (kbd "M-p") 'move-text-up)
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
+
+
+
 
